@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import Error from './Error';
 
-const Formulario = ({pacientes, setPacientes}) => {
+const Formulario = ({paciente, pacientes, setPacientes}) => {
 
   const [nombre, setNombre] = useState('');
   const [propietario, setPropietario] = useState('');
@@ -10,6 +10,14 @@ const Formulario = ({pacientes, setPacientes}) => {
   const [alta, setAlta] = useState('');
   const [sintomas, setSintomas] = useState('');
   const [errores, setError] = useState(false);
+
+  //ejecuta cuando cambie la dependencia []
+  useEffect(() =>{
+    console.log('effect')
+  },[paciente])
+//ejecuta una vez
+
+
 
 
   const gernerarId = () => {
@@ -46,7 +54,7 @@ const Formulario = ({pacientes, setPacientes}) => {
 
   return (
 
-    <div className='md:w-1/2 lg:w-2/5'>
+    <div className='md:w-full lg:w-2/5'>
       <h2 className='font-blank text-3xl text-center'>Seguimiento Pacientes</h2>
 
       <p className='text-lg mt-5 text-center mb-10'>
