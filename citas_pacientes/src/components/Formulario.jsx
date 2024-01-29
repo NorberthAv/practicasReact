@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import Error from './Error';
 
-const Formulario = ({paciente, pacientes, setPacientes}) => {
+const Formulario = ({paciente, setPaciente ,pacientes, setPacientes}) => {
 
   const [nombre, setNombre] = useState('');
   const [propietario, setPropietario] = useState('');
@@ -13,7 +13,14 @@ const Formulario = ({paciente, pacientes, setPacientes}) => {
 
   //ejecuta cuando cambie la dependencia []
   useEffect(() =>{
-    console.log('effect')
+    if (Object.keys(paciente).length > 0) {
+      setNombre(paciente.nombre)
+      setPropietario(paciente.propietario)
+      setEmail(paciente.email)
+      setAlta(paciente.alta)
+      setSintomas(paciente.sintomas)
+      
+    }
   },[paciente])
 //ejecuta una vez
 
@@ -38,9 +45,19 @@ const Formulario = ({paciente, pacientes, setPacientes}) => {
     setError(false)
 
     //objeto paciente
-    const objetoPaciente ={nombre, propietario, email, alta, sintomas,id:gernerarId()}
+    const objetoPaciente ={nombre, propietario, email, alta, sintomas}
+if(paciente.id){
+  objetoPaciente.id = paciente.id;
 
-    setPacientes([...pacientes,objetoPaciente])
+  const pacientesActualizados = pacientes.map(pacienteState => pacienteState.id === paciente.id ? objetoPaciente: pacienteState)
+
+  setPacientes(pacientesActualizados)
+  setPaciente({})
+}else{
+
+  objetoPaciente.id = gernerarId();
+  setPacientes([...pacientes,objetoPaciente])
+}
 
     //Reiniciar Form 
     setNombre('')
@@ -124,7 +141,7 @@ const Formulario = ({paciente, pacientes, setPacientes}) => {
         </div>
         <input type="submit"
           className='bg-indigo-600 w-full cursor-pointer transition-color hover:bg-indigo-700 p-3 text-white uppercase font-bold'
-          value="Agregar Paciente" />
+          value={paciente.id ? 'Editar Paciente' : 'Agregar Paciente'} />
       </form>
     </div>
 

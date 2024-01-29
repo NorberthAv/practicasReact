@@ -1,11 +1,11 @@
 
 import { useEffect } from "react"
 import Paciente from "./Paciente"
-const ListadoPacientes = ({ pacientes, setPaciente }) => {
+const ListadoPacientes = ({ pacientes, setPaciente ,eliminarPaciente }) => {
 
-  useEffect(() =>{
-    console.log('se agrego un nuevo paciente')
-  },[pacientes])
+  // useEffect(() =>{
+  //   console.log('se agrego un nuevo paciente')
+  // },[pacientes])
 
   return (
     <div className='md:w-full lg:w-3/5 text-justify md:h-screen overflow-y-scroll'>
@@ -22,7 +22,9 @@ const ListadoPacientes = ({ pacientes, setPaciente }) => {
               return (<Paciente
                 key = {paciente.id}
                 setPaciente = {setPaciente}
-                paciente={paciente} />)
+                paciente={paciente} 
+                eliminarPaciente = {eliminarPaciente}
+                />)
             })
           }
         </>
