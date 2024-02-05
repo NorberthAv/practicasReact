@@ -1,2 +1,0 @@
-# practicasReact
-Practicas-React

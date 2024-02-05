@@ -15,18 +15,18 @@ const Layout = () => {
                  hover:text-blue-300
                 `
                     } to={"/"}>Clientes</Link>
-                    {/* <Link className={`
+                    <Link className={`
                 ${location.pathname === '/cliente/nuevo' ? 'text-blue-300' : 'text-white'}
                 text-2xl block mt-2
                 hover:text-blue-300
-                text-white`} to="/cliente/nuevo">Nuevo Cliente</Link> */}
-               <NavLink
+                text-white`} to="/cliente/nuevo">Nuevo Cliente</Link>
+               {/* <NavLink
                className={({isActive}) => isActive ? ' text-blue-300 text-2xl block mt-2' : 'text-white  text-2xl block mt-2'}
                to={'/cliente/nuevo'}
                >
 
                Nuevo Cliente
-               </NavLink>
+               </NavLink> */}
                
                 </nav>
             </aside>
