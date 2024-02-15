@@ -30,6 +30,7 @@ const Index = () => {
               {clientes.map( cliente => (
 
                 <Cliente 
+                key = {cliente.id}
                 cliente ={cliente}
                 />
            
