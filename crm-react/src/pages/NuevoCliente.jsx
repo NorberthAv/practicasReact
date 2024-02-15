@@ -6,6 +6,15 @@ export async function action({request}){
   const formData = await request.formData()
   console.log('submit...',request,formData)
 
+  // formData.get('nombre')
+  const datos = Object.fromEntries(formData)
+
+  //validacion
+  const errores = []
+  if(Object.values(datos).includes('')){
+      errores.push('Todos los campos son Obligatorios')
+  }
+
   return formData;
 }
 
