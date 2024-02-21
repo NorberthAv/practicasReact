@@ -1,12 +1,11 @@
 import React from 'react'
 import { useNavigate, Form ,useActionData} from 'react-router-dom'
 import Formulario from '../components/Formulario'
+import { agregarCliente } from '../data/clientes'
 import  Error from '../components/Error'
 
 export async function action({request}){
   const formData = await request.formData()
-  console.log('submit...',request,formData)
-
   // formData.get('nombre')
   const datos = Object.fromEntries(formData)
 
@@ -25,7 +24,9 @@ export async function action({request}){
 
     return errores
   }
-  return formData;
+
+  agregarCliente(formData) ;
+
 }
 
 const NuevoCliente = () => {

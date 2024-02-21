@@ -1,11 +1,13 @@
 import React from 'react'
 import { useLoaderData } from 'react-router-dom';
 import Cliente from '../components/Cliente';
-import { Dataclientes } from '../data/DataCliente';
+import {obtenerClientes} from '../data/clientes'
+// import { Dataclientes } from '../data/DataCliente';
 
 export function loader() {
-  
-  return Dataclientes;
+  const clientes = obtenerClientes();
+  return clientes;
+  // return Dataclientes;
 }
 const Index = () => {
 
