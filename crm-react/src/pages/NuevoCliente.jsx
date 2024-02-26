@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate, Form ,useActionData} from 'react-router-dom'
+import { useNavigate, Form ,useActionData, redirect} from 'react-router-dom'
 import Formulario from '../components/Formulario'
 import { agregarCliente } from '../data/clientes'
 import  Error from '../components/Error'
@@ -11,6 +11,8 @@ export async function action({request}){
 
   //validacion
   const errores = []
+  
+const email = formData.get('email')
   let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
 
   if(Object.values(datos).includes('')){
@@ -25,7 +27,8 @@ export async function action({request}){
     return errores
   }
 
-  agregarCliente(formData) ;
+  agregarCliente(datos) ;
+  return redirect('/')
 
 }
 
