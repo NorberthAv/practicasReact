@@ -1,0 +1,9 @@
+
+populate=* obtiene campos que no guarda el strappi
+/api/guitarras/1?populate=imagen
+
+populate=imagen obtiene el campos colocado en el igual que no guarda el strappi
+
+
+/api/guitarras/1 ruta filtro
+/api/guitarras ruta lista

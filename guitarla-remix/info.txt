@@ -1,0 +1,1 @@
+las funciones de meta y links solo funcionan en los archivos dentro de la carpeta routes
