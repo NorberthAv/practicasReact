@@ -1,14 +1,17 @@
+
 import { MenuItems } from "../types"
 
 type MenuItemsProps = {
-    menuItems: MenuItems
-    addItem: (item: MenuItems) => void
+  menuItems: MenuItems
+  addItem: (item: MenuItems) => void
 }
+
 
 
 const MenuItem = ({addItem, menuItems }: MenuItemsProps) => {
   return (
     <button 
+    onClick={() => addItem(menuItems)}
     className="border-2 p-3 border-teal-400 hover:bg-teal-200 w-full flex justify-between rounded-md"
     >
     <p>{menuItems.name}</p>

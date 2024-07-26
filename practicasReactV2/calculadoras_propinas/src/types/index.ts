@@ -5,4 +5,7 @@ export type MenuItems = {
 }
 export type OrderItem = MenuItems & {
     quantity: number
+    
 }
+
+export type OrderItemID = OrderItem['id']

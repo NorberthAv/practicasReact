@@ -1,12 +1,15 @@
 import Header from "./components/Header"
 import MenuItem from "./components/MenuItem"
+import OrderContents from "./components/OrderContents"
 import { menuItems } from "./data/db"
+import OrderTotal from "./components/OrderTotal"
 import { useOrder } from "./hooks/useOrder"
+import PropinaForm from "./components/PropinaForm"
 // import { MenuItems } from "./types"
 
 function App() {
 
-  const {addItem} = useOrder()
+  const {order,propina, setPropina,addItem,removeItem,placeOrder} = useOrder()
 
   return (
     <>
@@ -24,8 +27,31 @@ function App() {
         </div>
   
       </div>
-      <div>
-        <h2>CONSUMO</h2>
+      <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
+      {order.length > 0 ? (
+        <>
+          <OrderContents  
+          order={order} 
+          removeItem={removeItem}
+          />
+          <PropinaForm
+          propina={propina}
+          setPropina={setPropina}/>
+    
+          <OrderTotal 
+            placeOrder={placeOrder}
+            propina={propina}
+            order={order} 
+          />
+        </>
+      ) : (
+        <p className='text-center text-2xl'>La orden esta vacia</p>
+      ) }
+    
+    
+
+    
+
 
       </div>
 
